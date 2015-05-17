@@ -1,0 +1,175 @@
+.container {
+	width: 100%;
+	margin-top: 6%;
+}
+
+.waitingCameraStream {
+	position: fixed;
+	top: 40%;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 24px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.stream_container {
+	display: table;
+	margin: 0 auto;
+}
+
+.scoreContainer {
+	position: relative;
+	margin-top: 50px;
+	width: 660px;
+	height: 50px;
+	display: none;
+	z-index: 50;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.rightPlayerContainer,
+.leftPlayerContainer {
+	font-size: 36px;
+	color: #4ba24b;
+}
+
+.leftPlayerContainer {
+	float: left;
+}
+
+.rightPlayerContainer {
+	float: right;
+}
+
+.countdownContainer {
+	font-size: 36px;
+	color: #FF0000;
+}
+
+.video{
+	width: 500px;
+	height: 400px;
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+	z-index: 1;
+}
+
+.videoDownscaled{
+	/* CAUTION: if you downscale the width by factor x you also have to downscale the height by the same factor x, otherwise
+	the game wont work.
+	*/
+	width: 125px;
+	height: 100px;
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+	z-index: 1;
+}
+
+.stream {
+	width: 500px;
+	height: 400px;
+	display: none;
+}
+
+.controls {
+	/* display: table; */
+	display: inline;
+	margin: 0 auto;
+	height: 200px;
+	width: 100%;
+}
+
+.horizontalBlock{
+	width: 300px;
+	height: 175px;
+	margin: 10px;
+	/* display: inline-block; */
+	float: left;
+}
+
+.streamStartedBlock {
+	display: none;
+}
+
+.debugBlock {
+	display: none;
+}
+
+.options {
+	display: table;
+	margin: 0 auto;
+}
+
+.call_control {
+	width: 280px;
+}
+
+.call_control input {
+	width: 200px;
+}
+
+.call_control .make-call {
+	float: right;
+	margin-top: -33px;
+}
+
+.start_stream,
+.stop_stream {
+	margin: 20px auto;	
+}
+
+input[type=radio].css-checkbox {
+	display:none;
+}
+
+input[type=radio].css-checkbox + label.css-label {
+	padding-left:21px;
+	height:16px; 
+	display:inline-block;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=radio].css-checkbox:checked + label.css-label {
+	background-position: 0 -16px;
+}
+
+label.css-label {
+	background-image:url(../img/custom_checkboxes.png);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/************ BALLS AND CANVAS *************/
+
+.animation_container {
+	position: absolute;
+	display: none;
+	z-index: 2;
+}
+
+#viewport {
+	display: none;
+	border: 1px dashed;
+}
+
+/***********************************/

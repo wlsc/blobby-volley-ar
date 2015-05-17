@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US"
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Camera Volley - Project for the lecture Virtual and Augmented Reality</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-switch.min.css" >
+<link rel="stylesheet" type="text/css" href="css/app.min.css">
+<body>
+	<div class="waitingCameraStream"><label>Waiting camera stream...</label></div>
+	<div class="scoreContainer">
+			<label class="leftPlayerContainer">SCORE: <span id="leftPlyerSpan" class="leftPlayerScore">0</span></label>
+			<label class="countdownContainer" id="countdown"></label>
+			<label class="rightPlayerContainer">SCORE: <span id="rightPlayerSpan" class="rightPlayerScore">0</span></label>
+	</div>
+	<div class="container">
+		<video id="left_video" class="stream" poster="img/stream_poster.png" autoplay muted></video>
+		<video id="right_video" class="stream" poster="img/stream_poster.png" autoplay muted></video>
+		<div class="stream_container">
+			<canvas class="video" id="left_video_canvas"></canvas>
+			<canvas class="video" id="right_video_canvas"></canvas>
+		</div>
+		<div class="controls">
+			<div class="horizontalBlock streamStartedBlock">
+				<strong>Give this link to your opponent</strong> 
+			    <input type="search" class="form-control" id="my-id" placeholder="None" value="none" readonly="readonly" />
+				<!-- <p style="margin-top: 10px;"><strong>Give this url to your friend for play with him!</strong></p> -->
+				<h3>... or join a game</h3>
+				<div class="form-group call_control">
+					<input class="form-control" type="text" placeholder="Opponent ID" id="callto-id">
+					<button class="btn btn-success make-call">JOIN</button>
+				</div>
+			</div>
+			
+			<div class="horizontalBlock streamStartedBlock">
+				<div id="options" class="options">
+					<p><strong>Select the view of the image processing:</strong></p>
+					<input type="radio" id="r_webcam" class="css-checkbox" name="imageProccessing" value="0" checked="checked" /><label for="r_webcam" class="css-label">Webcam</label><br>
+					<input type="radio" id="r_subtraction" class="css-checkbox" name="imageProccessing" value="1" /><label for="r_subtraction" class="css-label">Subtraction</label><br>
+					<input type="radio" id="r_thresholded" class="css-checkbox" name="imageProccessing" value="2" /><label for="r_thresholded" class="css-label">Thresholded</label><br>
+					<input type="radio" id="r_median" class="css-checkbox" name="imageProccessing" value="3" /><label for="r_median" class="css-label">Median</label><br>
+					<!-- <input type="radio" id="r_medianEdges" class="css-checkbox" name="imageProccessing" value="4" /><label for="r_medianEdges" class="css-label">Edges</label> -->
+				</div>
+			</div>
+			<div class="horizontalBlock streamStartedBlock">
+				<h3>Calibration</h3>
+				<div class="form-calibrate calibrate_control">
+					<button id="calibrate" class="btn btn-success">Calibrate</button>
+				</div>
+				<br>
+				<div class="form-play play_control">
+					<button id="play" class="btn btn-success" disabled>Not calibrated</button>
+				</div>
+			</div>
+			
+			<div class="horizontalBlock streamStartedBlock">
+				<h3>Threshold: <span id="thresholdInput">33</span></h3>
+				<div class="form-group threshold_control">
+					<input class="form-threshold" id="thresholdSlider" type="range" min="0" max="255" step="1" value="33" />
+				</div>
+			</div>
+			
+			<div class="horizontalBlock debugBlock">
+				<h3>Debug</h3>
+				<input type="checkbox" id="debugCheckbox" checked="checked">
+			</div>
+			
+		</div>
+
+		
+	</div>
+
+	<div class="animation_container">
+		<canvas id="viewport" style="z-index: 4;"></canvas>
+	</div>
+	
+	<!-- Canvases for debugging purposes -->
+	<canvas class="videoDownscaled visibleOnDebug" id="displayLeftVideoDownscaled"></canvas>
+	<canvas class="videoDownscaled visibleOnDebug" id="displaySubtractedBackground"></canvas>
+	<canvas class="videoDownscaled visibleOnDebug" id="displayForegroundthreshold"></canvas>
+	<canvas class="videoDownscaled visibleOnDebug" id="displayMedian"></canvas>
+	<canvas class="videoDownscaled visibleOnDebug" id="displayMedianEdges"></canvas>
+	<canvas class="videoDownscaled visibleOnDebug" id="displayNoBackground"></canvas>
+	<canvas class="videoDownscaled visibleOnDebug" id="displayGradient"></canvas>
+    <canvas class="videoDownscaled visibleOnDebug" id="photo"></canvas>
+
+	
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-switch.min.js"></script>
+	<script src="js/adapter.js"></script>
+	<script src="js/physicsjs-full-0.7.0.min.js"></script>
+	<script src="js/peer.min.js"></script>
+	<script src="js/app.min.js"></script>
+</body>
+</html>
